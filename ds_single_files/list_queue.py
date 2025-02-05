@@ -67,3 +67,8 @@ class ListQueue(QueueADT, Generic[T]):
     def __repr__(self) -> str:
         '''Retourne la représentation interne de la file'''
         return repr(self._items)
+    
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
