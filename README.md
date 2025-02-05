@@ -1,2 +1,2 @@
 # algo-ds
-Exercices sur les structures de données et algorithm
+Exercices sur les structures de données et algorithmes
