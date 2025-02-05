@@ -32,30 +32,21 @@ def check_balanced(text: str) -> str:
     >>> check_balanced("a(b[c)d]e")
     False
     '''
-    
-    def build_dictionaries(parentheses):
-        opening_paren = {}
-        closing_paren = {}
         
-        for pair in parentheses:
-            opening, closing = list(pair)
-            opening_paren[opening] = closing
-            closing_paren[closing] = opening
+    m = ParenthesisMatcher()
+    m.add_match('(', ')')
+    m.add_match('[', ']')
+    m.add_match('{', '}')
             
-        return opening_paren, closing_paren
-        
-    opening_p, closing_p = build_dictionaries(['()', '{}', '[]'])
-    
     p_stack = Stack()
     
     for c in text:
-        if c in opening_p:
+        if m.is_opening_paren(c):
             p_stack.push(c)
-        elif c in closing_p:
-            opening = closing_p[c]
-            
+        elif m.is_closing_paren(c):
             try:
-                if p_stack.peek() == opening:
+                top = p_stack.peek()
+                if m.match(top, c):
                     p_stack.pop()
                 else:
                     return False
