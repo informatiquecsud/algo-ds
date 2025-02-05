@@ -1,5 +1,5 @@
 
-from stack import StackADT
+from stack import StackADT, EmptyStackError
 from typing import TypeVar, Generic
 
 T = TypeVar('T')
