@@ -1,4 +1,9 @@
 
+from stack import StackADT
+from typing import TypeVar, Generic
+
+T = TypeVar('T')
+
 class ListStack(StackADT[T], Generic[T]):
     '''
 
